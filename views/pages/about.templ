@@ -1,0 +1,19 @@
+package pages
+
+import "github.com/toastsandwich/ewaste-collection-caller/views/base"
+
+templ about() {
+	<div class="container">
+		<h1 class="mb-4">About Us</h1>
+		<p class="lead">Meet the team behind the E-Waste Drive Scheduler:</p>
+		<ul class="list-group">
+			<li class="list-group-item">Shreyas Mali</li>
+			<li class="list-group-item">Siddesh Narshinkar</li>
+			<li class="list-group-item">Samiksha Pandit</li>
+		</ul>
+	</div>
+}
+
+templ AboutPage() {
+	@base.Base("About", about())
+}

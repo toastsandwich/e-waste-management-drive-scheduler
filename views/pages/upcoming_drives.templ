@@ -1,0 +1,48 @@
+package pages
+
+import (
+	"github.com/toastsandwich/ewaste-collection-caller/db"
+	"github.com/toastsandwich/ewaste-collection-caller/views/base"
+)
+
+type Drives []db.Drive
+
+templ schedule(drives Drives) {
+	<div class="container">
+		<h1 class="mb-4">Upcoming E-Waste Collection Drives</h1>
+		if len(drives) == 0 {
+			<div class="alert alert-warning" role="alert">
+				No upcoming drives available.
+			</div>
+		} else {
+			<table class="table table-striped table-hover">
+				<thead class="table-light">
+					<tr>
+						<th scope="col">Drive Name</th>
+						<th scope="col">Address</th>
+						<th scope="col">Customer</th>
+						<th scope="col">Scheduled Date & Time</th>
+					</tr>
+				</thead>
+				<tbody>
+					for _, drive := range drives {
+						<tr>
+							<td>{ drive.Name }</td>
+							<td>{ drive.Address }</td>
+							<td>{ drive.Customer.Name }</td>
+							<td>{ drive.ScheduledDate.Format("2006-01-02 15:04") }</td>
+						</tr>
+					}
+				</tbody>
+			</table>
+		}
+		<div class="mt-4">
+			<a href="/schedule-drive" class="btn btn-primary">Schedule a New Drive</a>
+			<a href="/" class="btn btn-secondary">Back to Home</a>
+		</div>
+	</div>
+}
+
+templ UpcomingDrives(d Drives) {
+	@base.Base("Upcoming Drives", schedule(d))
+}
