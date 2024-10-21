@@ -1,0 +1,11 @@
+{
+    "name": "my-service-name",
+    "build": {
+      "command": "go build -o app ./web/main/",
+      "output": "main"
+    },
+    "start": {
+      "command": "./main"
+    }
+  }
+  
